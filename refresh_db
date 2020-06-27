@@ -1,0 +1,11 @@
+#!/bin/bash
+
+psql -c "DROP DATABASE IF EXISTS java-simple-Darchetypedb"
+psql -c "DROP USER IF EXISTS java-simple-Darchetypedb"
+psql -c "CREATE USER java-simple-Darchetypedb WITH PASSWORD 'java-simple-Darchetypedb'"
+psql -c "CREATE DATABASE java-simple-Darchetypedb"
+psql -c "GRANT ALL PRIVILEGES ON DATABASE java-simple-Darchetypedb TO java-simple-Darchetypedb"
+
+java -jar top/target/java-simple-Darchetype_top-1.0-SNAPSHOT.jar db drop-all --confirm-delete-everything top/src/main/resources/config.yml
+java -jar top/target/java-simple-Darchetype_top-1.0-SNAPSHOT.jar db migrate top/src/main/resources/config.yml
+java -jar top/target/java-simple-Darchetype_top-1.0-SNAPSHOT.jar refdata top/src/main/resources/config.yml

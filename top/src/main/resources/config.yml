@@ -1,0 +1,38 @@
+database:
+  driverClass: org.postgresql.Driver
+  user: java-simple-Darchetypedb
+  password: java-simple-Darchetypedb
+  url: jdbc:postgresql://localhost/java-simple-Darchetypedb
+  minSize: 1
+
+server:
+  type: simple
+  applicationContextPath: /
+  adminContextPath: /admin
+  connector:
+    type: http
+    port: 8080
+  requestLog:
+    appenders: []    
+
+#assets:
+# overrides:
+#   /assets: some_ui/src/main/webapp/assets/
+        
+logging:
+  level: INFO
+  loggers:
+    io.dropwizard: INFO    
+    org.hibernate.SQL: INFO
+    com.sun.jersey.api.container.filter.LoggingFilter: WARN
+  appenders:
+    - type: console
+
+refdata: refdata
+
+modelResource: java-simple-Darchetype-model.xml
+   
+beanValidationConstraints: constraints.xml
+
+swagger:
+  resourcePackage: com.abhi.dropwizard.java_simple_Darchetype.services
